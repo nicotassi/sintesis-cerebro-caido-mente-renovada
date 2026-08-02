@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El cerebro caído y la mente renovada — consulta rápida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700&family=Spectral:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101E26;
+  --ink-2:#172C36;
+  --bone:#E9E7DE;
+  --bone-dim:#B9BDB8;
+  --teal:#4FB3A8;
+  --gold:#C99B3F;
+  --rule:rgba(233,231,222,.14);
+  --rule-strong:rgba(233,231,222,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--ink); color:var(--bone);
+  font-family:"Spectral",Georgia,serif; font-weight:300;
+  font-size:17px; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+
+/* ---------- layout ---------- */
+.shell{display:grid; grid-template-columns:264px 1fr; min-height:100vh}
+.rail{
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  border-right:1px solid var(--rule); padding:26px 20px 40px;
+  background:linear-gradient(180deg,#0C1920,#101E26);
+}
+main{padding:48px 44px 120px; max-width:860px}
+
+/* ---------- rail ---------- */
+.brand{font-family:"Bodoni Moda",serif; font-size:19px; line-height:1.2; margin:0 0 4px}
+.brand em{font-style:italic; color:var(--gold)}
+.brand-sub{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--bone-dim); margin:0 0 22px}
+#q{
+  width:100%; background:rgba(0,0,0,.28); border:1px solid var(--rule-strong);
+  color:var(--bone); padding:9px 11px; font-family:"IBM Plex Mono",monospace;
+  font-size:12px; border-radius:2px; margin-bottom:20px;
+}
+#q::placeholder{color:#6C7B82}
+#q:focus{outline:2px solid var(--teal); outline-offset:1px; border-color:transparent}
+.rail-part{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold); margin:22px 0 8px; padding-bottom:5px;
+  border-bottom:1px solid var(--rule)}
+.rail a{
+  display:flex; gap:9px; text-decoration:none; color:var(--bone-dim);
+  font-size:13.5px; line-height:1.35; padding:5px 0; border-left:2px solid transparent;
+  padding-left:8px; margin-left:-10px; transition:color .15s,border-color .15s;
+}
+.rail a:hover{color:var(--bone)}
+.rail a.on{color:var(--bone); border-left-color:var(--teal)}
+.rail a .n{font-family:"IBM Plex Mono",monospace; font-size:11px; color:#5D6E76; flex:0 0 18px}
+.rail a.on .n{color:var(--teal)}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:1px solid var(--rule-strong); padding-bottom:34px; margin-bottom:14px}
+.eyebrow{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--teal); margin:0 0 14px}
+h1{font-family:"Bodoni Moda",serif; font-weight:400; font-size:clamp(34px,5.4vw,54px);
+  line-height:1.06; margin:0 0 16px; letter-spacing:-.01em}
+h1 em{font-style:italic; color:var(--gold)}
+.lede{font-size:18px; color:#C6C9C3; max-width:60ch; margin:0}
+
+/* ---------- thesis ---------- */
+.thesis{
+  margin:34px 0 10px; padding:22px 24px; border:1px solid var(--rule-strong);
+  border-left:3px solid var(--gold); background:rgba(201,155,63,.05);
+  font-family:"Bodoni Moda",serif; font-size:19px; line-height:1.5; font-style:italic;
+}
+
+/* ---------- sections ---------- */
+section{padding-top:52px; scroll-margin-top:24px}
+.part-head{border-top:1px solid var(--rule-strong); padding-top:30px; margin-top:22px}
+.part-label{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--gold); margin:0 0 6px}
+h2{font-family:"Bodoni Moda",serif; font-weight:400; font-size:30px; line-height:1.16;
+  margin:0 0 6px; letter-spacing:-.005em}
+h2 .num{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--teal);
+  vertical-align:6px; margin-right:12px; letter-spacing:.06em}
+.tag{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.1em;
+  text-transform:uppercase; color:#6C7B82; margin:0 0 16px}
+p{margin:0 0 14px}
+ul{margin:0 0 14px; padding-left:19px}
+li{margin-bottom:7px}
+strong{font-weight:600; color:#F4F2EB}
+.ref{font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--gold);
+  white-space:nowrap}
+.gr{font-style:italic; color:var(--teal)}
+
+/* ---------- dual register (signature) ---------- */
+.dual{display:grid; grid-template-columns:1fr 1fr; gap:0; margin:20px 0 22px;
+  border:1px solid var(--rule-strong)}
+.dual > div{padding:16px 18px}
+.dual .scr{border-right:1px solid var(--rule-strong); background:rgba(201,155,63,.05)}
+.dual .neu{background:rgba(79,179,168,.05)}
+.dual h4{margin:0 0 10px; font-family:"IBM Plex Mono",monospace; font-size:9.5px;
+  letter-spacing:.16em; text-transform:uppercase; font-weight:500}
+.dual .scr h4{color:var(--gold)}
+.dual .neu h4{color:var(--teal)}
+.dual p{font-size:15px; margin:0 0 10px; line-height:1.55}
+.dual p:last-child{margin:0}
+.row{display:contents}
+.dual .pair{border-top:1px solid var(--rule)}
+
+/* ---------- table ---------- */
+.tbl{width:100%; border-collapse:collapse; margin:18px 0 22px; font-size:14.5px}
+.tbl th{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.14em;
+  text-transform:uppercase; text-align:left; padding:9px 12px; color:var(--ink);
+  background:var(--bone-dim); font-weight:500}
+.tbl td{padding:10px 12px; border-bottom:1px solid var(--rule); vertical-align:top;
+  line-height:1.5}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{color:#F4F2EB}
+
+/* ---------- callouts ---------- */
+.warn{border-left:3px solid #C4614A; background:rgba(196,97,74,.07);
+  padding:15px 18px; margin:18px 0; font-size:15.5px}
+.warn b{color:#E39880; font-weight:600}
+.key{border-left:3px solid var(--teal); background:rgba(79,179,168,.06);
+  padding:15px 18px; margin:18px 0; font-size:15.5px}
+
+/* ---------- layers ---------- */
+.layer{display:grid; grid-template-columns:44px 1fr; gap:16px; padding:16px 0;
+  border-bottom:1px solid var(--rule)}
+.layer:last-child{border-bottom:none}
+.layer .lv{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--teal);
+  padding-top:4px; letter-spacing:.06em}
+.layer h3{margin:0 0 5px; font-family:"Bodoni Moda",serif; font-weight:400; font-size:20px}
+.layer p{margin:0 0 8px; font-size:15.5px}
+.layer .miss{font-size:14px; color:#98A5AB; font-style:italic; margin:0}
+
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin:0 0 16px}
+.chip{font-family:"IBM Plex Mono",monospace; font-size:11px; padding:4px 9px;
+  border:1px solid var(--rule-strong); border-radius:2px; color:var(--gold)}
+
+.empty{display:none; font-family:"IBM Plex Mono",monospace; font-size:13px;
+  color:var(--bone-dim); padding:40px 0}
+.hidden{display:none}
+
+footer{margin-top:80px; padding-top:24px; border-top:1px solid var(--rule);
+  font-size:14px; color:#7E8C93}
+footer em{font-family:"Bodoni Moda",serif; font-size:16px; color:var(--gold)}
+
+/* ---------- mobile ---------- */
+@media(max-width:860px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static; height:auto; border-right:none;
+    border-bottom:1px solid var(--rule-strong); padding:20px 22px 26px}
+  .rail nav{display:none}
+  .rail.open nav{display:block}
+  .toggle{display:block; width:100%; background:none; border:1px solid var(--rule-strong);
+    color:var(--bone); font-family:"IBM Plex Mono",monospace; font-size:11px;
+    letter-spacing:.12em; text-transform:uppercase; padding:9px; border-radius:2px;
+    cursor:pointer}
+  main{padding:34px 22px 90px}
+  .dual{grid-template-columns:1fr}
+  .dual .scr{border-right:none; border-bottom:1px solid var(--rule-strong)}
+  .tbl{font-size:13.5px}
+  .tbl td,.tbl th{padding:8px 9px}
+}
+@media(min-width:861px){.toggle{display:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<aside class="rail" id="rail">
+  <p class="brand">El cerebro caído<br>y la <em>mente renovada</em></p>
+  <p class="brand-sub">Consulta rápida · 26 capítulos</p>
+  <button class="toggle" id="toggle">Ver índice</button>
+  <nav>
+    <input id="q" type="search" placeholder="buscar…" autocomplete="off" aria-label="Buscar en el estudio">
+    <div id="nav"></div>
+  </nav>
+</aside>
+
+<main>
+  <header class="hero">
+    <p class="eyebrow">Neurociencia · Escritura · Síntesis</p>
+    <h1>Un solo hombre,<br><em>dos descripciones</em></h1>
+    <p class="lede">Guía de consulta del estudio completo. Cada bloque es autónomo: entrá por el índice o por el buscador y leé solo lo que necesitás.</p>
+  </header>
+
+  <p class="thesis">Dios creó al ser humano como una unidad. La caída afectó esa unidad completa. La redención alcanza esa misma unidad. Por lo tanto, el Espíritu Santo no renueva la mente <em>al margen</em> de la neurología, sino <em>sobre</em> ella y <em>a través</em> de ella.</p>
+
+  <div id="content">
+
+  <!-- ================= PARTE I ================= -->
+  <section class="part-head" data-part="I">
+    <p class="part-label">Parte I — El cerebro que heredamos</p>
+  </section>
+
+  <section id="c1" data-k="tres cerebros reptiliano limbico neocortex maclean kahneman sistema 1 2 velocidad amigdala">
+    <h2><span class="num">01</span>Los tres cerebros</h2>
+    <p class="tag">Modelo · límites · por qué igual sirve</p>
+    <p>MacLean (1969): reptiliano (supervivencia refleja), límbico (emoción y valoración), neocórtex (lenguaje, planificación, inhibición).</p>
+    <div class="warn"><b>Advertencia:</b> tomado literalmente el modelo es <b>falso</b>. Los reptiles tienen estructuras límbicas; no hay tres cerebros separados; la emoción no es más primitiva que la razón (Damasio). Se usa como metáfora pedagógica, no como anatomía.</div>
+    <p>El núcleo verdadero dentro de la metáfora falsa: <strong>hay sistemas que operan a velocidades, costos y horizontes temporales distintos, y entran en conflicto de forma previsible.</strong> Kahneman lo formuló como Sistema 1 (rápido, automático, siempre encendido) y Sistema 2 (lento, deliberado, caro, perezoso).</p>
+    <div class="key">Dato clave: una señal de amenaza llega a la amígdala en ~12-20 ms; el procesamiento consciente tarda 200-300 ms o más. <strong>Para cuando vos te enterás, tu cuerpo ya reaccionó.</strong> Lo elegido son los segundos siguientes.</div>
+  </section>
+
+  <section id="c2" data-k="supervivencia miedo estatus recursos reproduccion sesgo negatividad mismatch desajuste cortisol estres">
+    <h2><span class="num">02</span>Supervivencia como programa base</h2>
+    <p class="tag">Objetivo por defecto · cuatro programas · desajuste</p>
+    <p>El cerebro no es un órgano de la verdad: <strong>es un órgano de la supervivencia.</strong> Un falso positivo cuesta energía; un falso negativo cuesta el organismo. De ahí el <strong>sesgo de negatividad</strong>: lo malo pesa más que lo bueno de igual magnitud.</p>
+    <p>Cuatro programas heredados: evitación de la muerte · búsqueda de recursos · reproducción · <strong>estatus y pertenencia</strong> (el más subestimado: el rechazo social se procesa en regiones que se solapan con el dolor físico).</p>
+    <p><strong>Desajuste (mismatch):</strong> hardware calibrado para un entorno que ya no existe. El apetito por azúcar era adaptativo en la escasez; la vigilancia servía contra depredadores, no contra un mail; la sensibilidad al estatus funcionaba en un grupo de treinta, no contra mil millones de perfiles seleccionados algorítmicamente.</p>
+    <div class="key">El estrés crónico <strong>reduce específicamente la capacidad de autocontrol</strong>: deteriora hipocampo, hiperactiva la amígdala y baja el rendimiento prefrontal. Un hombre cansado, endeudado o amenazado tiene literalmente menos capacidad de resistir un impulso.</div>
+  </section>
+
+  <section id="c3" data-k="dopamina recompensa deseo wanting liking berridge schultz error de prediccion habito tolerancia lembke adiccion">
+    <h2><span class="num">03</span>El circuito de recompensa</h2>
+    <p class="tag">Dopamina · wanting vs liking · el bucle</p>
+    <p>La dopamina <strong>no es la molécula del placer</strong>. Es la molécula del <em>querer</em>. Berridge y Robinson disociaron:</p>
+    <div class="dual">
+      <div class="scr"><h4>Wanting — querer</h4><p>Vía dopaminérgica mesolímbica. Impulso, búsqueda, anticipación. Se puede aumentar sin que aumente el disfrute.</p></div>
+      <div class="neu"><h4>Liking — gustar</h4><p>Opioides endógenos, zonas mucho más pequeñas. El placer efectivo. Sobrevive aunque se bloquee la dopamina.</p></div>
+    </div>
+    <p>Esto explica una experiencia universal: <strong>querer intensamente algo que, obtenido, no satisface</strong> — y volver a quererlo igual la próxima vez. Es el <span class="gr">hebel</span> de Eclesiastés y las cisternas rotas de <span class="ref">Jer 2:13</span>.</p>
+    <p><strong>Error de predicción (Schultz):</strong> la dopamina no codifica la recompensa sino la diferencia entre lo esperado y lo obtenido. Consecuencias: lo predecible deja de motivar · la habituación es inevitable · <strong>el pico migra de la recompensa a la señal que la anuncia</strong>.</p>
+    <p><strong>Bucle del hábito:</strong> señal → anhelo → respuesta → recompensa. Con repetición la conducta migra del control deliberado a los ganglios basales. Deja de sentirse como decisión — y neurológicamente deja de serlo, aunque la automatización fue construida por decisiones previas.</p>
+    <div class="key">El sistema de recompensa <strong>no es el villano</strong>. Sin él no hay ganas de nada, ni siquiera de lo bueno. El problema bíblico no es desear demasiado: es desear mal, y demasiado poco.</div>
+  </section>
+
+  <section id="c4" data-k="tentacion secuencia racionalizacion descuento hiperbolico ventana de decision vergüenza intervencion entorno">
+    <h2><span class="num">04</span>Por qué la razón pierde</h2>
+    <p class="tag">Arquitectura de la tentación · 7 pasos · 3 intervenciones</p>
+    <p>No es debilidad de carácter, es arquitectura: el impulso gana por <strong>velocidad</strong> (llega antes), <strong>costo</strong> (es barato), <strong>continuidad</strong> (nunca se apaga), <strong>horizonte</strong> (descuento hiperbólico: las preferencias se invierten según la cercanía) y porque el control ejecutivo <strong>varía con el estado corporal</strong>.</p>
+    <table class="tbl">
+      <tr><th>Paso</th><th>Qué ocurre</th></tr>
+      <tr><td>1 · Señal</td><td>Estímulo asociado a la recompensa. Objeto, hora, lugar, o estado emocional. Casi nunca consciente.</td></tr>
+      <tr><td>2 · Deseo</td><td>Descarga dopaminérgica ante la señal. Involuntario.</td></tr>
+      <tr><td>3 · Atención</td><td>El objeto se vuelve saliente; todo lo demás pierde peso.</td></tr>
+      <tr><td>4 · Distorsión</td><td><strong>El neocórtex no se apaga: se pone al servicio del impulso.</strong> Racionaliza, minimiza, renombra.</td></tr>
+      <tr><td>5 · Ventana</td><td>Segundos reales de intervención posible. Depende del estado y de tener lista una alternativa.</td></tr>
+      <tr><td>6 · Ejecución</td><td>La conducta se realiza.</td></tr>
+      <tr><td>7 · Refuerzo</td><td>Alivio + culpa. <strong>Y la culpa es a su vez una señal.</strong> El bucle se cierra sobre sí mismo.</td></tr>
+    </table>
+    <div class="key"><strong>Tres puntos de intervención, muy desiguales:</strong><br>
+    · <em>Tardía</em> (paso 5-6): resistir el impulso activo. La más intuitiva y la menos eficaz.<br>
+    · <em>Temprana</em> (paso 1-2): modificar el entorno de señales. Muy superior. Las personas con más autocontrol medido <strong>no resisten más: se exponen a menos.</strong><br>
+    · <em>Estructural</em>: reconstruir deseos, identidad y hábitos. La más lenta y la única duradera.</div>
+  </section>
+
+  <!-- ================= PARTE II ================= -->
+  <section class="part-head" data-part="II">
+    <p class="part-label">Parte II — Lo que dicen las Escrituras</p>
+  </section>
+
+  <section id="c5" data-k="caida genesis 3 nefesh unidad antropologia dualismo consecuencias miedo yetser">
+    <h2><span class="num">05</span>La caída y sus consecuencias</h2>
+    <p class="tag">Génesis 2-3 · antropología unitaria</p>
+    <p><span class="ref">Gn 2:7</span> — el hombre <strong>llegó a ser</strong> <span class="gr">nefesh chayyah</span>. No <em>tiene</em> alma: <em>es</em> alma viviente. <strong>La antropología bíblica es unitaria, no dualista.</strong> El dualismo cuerpo-malo/espíritu-bueno entró desde el platonismo y el gnosticismo.</p>
+    <p><strong>La secuencia de Gn 3:</strong> cuestionar la palabra → distorsionar la generosidad de Dios → negar la consecuencia → sospechar del motivo → <strong>reevaluar el objeto</strong> (v.6: el árbol no cambió; cambió la percepción del valor) → actuar → vergüenza, ocultamiento y <strong>miedo</strong>.</p>
+    <div class="key">La primera emoción registrada del hombre caído es el miedo <span class="ref">(Gn 3:10)</span>. Y la caída no empezó con un acto: empezó con una <strong>revaluación</strong>.</div>
+    <p>Consecuencias declaradas <span class="ref">(Gn 3:16-19)</span>: dolor corporal, conflicto relacional, trabajo con sudor, muerte biológica. <strong>Ninguna es puramente espiritual.</strong> Si la caída alcanzó el cuerpo, alcanzó el sistema nervioso.</p>
+    <div class="chips"><span class="chip">Gn 6:5</span><span class="chip">Gn 8:21 · yetser</span><span class="chip">Sal 51:5</span><span class="chip">Jer 17:9</span><span class="chip">Ro 3:10-18</span><span class="chip">Ef 2:1-3</span></div>
+  </section>
+
+  <section id="c6" data-k="sarx carne naturaleza pecaminosa galatas 5 ley principio operativo hamartia poder">
+    <h2><span class="num">06</span>La <em>sarx</em>: la carne</h2>
+    <p class="tag">No es el cuerpo · es un modo de existencia</p>
+    <p><span class="gr">Sarx</span> en sentido paulino no significa cuerpo ni materia. Significa: <strong>el ser humano completo operando desde sus propios recursos, orientado a su conservación y gloria, sin sujeción a Dios.</strong></p>
+    <p>Prueba: si <span class="gr">sarx</span> fuera intrínsecamente pecaminosa, la encarnación sería imposible <span class="ref">(Jn 1:14)</span>. Y la mitad de las obras de la carne de <span class="ref">Gá 5:19-21</span> son incorpóreas: envidia, celos, ambición, divisiones. <strong>El orgullo religioso es obra de la carne tanto como la borrachera.</strong></p>
+    <p><strong>Dos imágenes de Pablo:</strong> la carne como <em>ley</em> (regularidad predecible, como la gravedad) y el pecado como <em>poder personificado</em> que reina, esclaviza y habita <span class="gr">(oikeo)</span>. Dimensión estructural y dimensión espiritual a la vez.</p>
+    <div class="key"><span class="ref">Gá 5:16</span> — la lógica es de <strong>desplazamiento, no de supresión</strong>: "andá por el Espíritu y no cumplirás el deseo de la carne". No dice "resistí".</div>
+  </section>
+
+  <section id="c7" data-k="romanos 7 lucha pablo debate interpretacion reactancia wegner oso blanco ley diagnostica thelo nous">
+    <h2><span class="num">07</span>Romanos 7: la guerra interior</h2>
+    <p class="tag">Función de la ley · el debate · vocabulario</p>
+    <p><strong>La ley activa lo que prohíbe</strong> <span class="ref">(7:8)</span>. En un ser caído la prohibición no solo revela el deseo: lo provoca. Psicología lo llamó <em>reactancia</em> (Brehm) y <em>efecto irónico</em> (Wegner, 1987, los osos blancos). Pablo lo formuló en el siglo I.</p>
+    <div class="warn"><b>Consecuencia:</b> las estrategias de santificación basadas en pura prohibición y fuerza de voluntad no solo fallan — con frecuencia <b>empeoran</b> el problema. No es pesimismo pastoral: es el argumento explícito de Pablo.</div>
+    <p><strong>El vocabulario:</strong> <span class="gr">thelo</span> (querer deliberado) vs <span class="gr">prasso</span> (hacer efectivo) · <span class="gr">nous</span> (mente que aprueba) vs <span class="gr">mele</span> (miembros donde opera lo contrario) · <span class="gr">aichmalotizo</span> (llevar cautivo como prisionero de guerra) · <span class="gr">oikeo</span> (el pecado habita).</p>
+    <p><strong>El debate abierto — cuatro posiciones:</strong></p>
+    <table class="tbl">
+      <tr><th>Posición</th><th>Sostenida por</th><th>Argumento central</th></tr>
+      <tr><td>Describe al creyente</td><td>Agustín tardío, Lutero, Calvino, Cranfield</td><td>Cambio a presente; deleite en la ley según el hombre interior (v.22)</td></tr>
+      <tr><td>Describe al no regenerado bajo la ley</td><td>Padres griegos, Fee, Moo (matizado)</td><td>"Vendido bajo pecado" y "llevado cautivo" contradicen 6:17-18 y 8:2; el Espíritu está ausente de todo Ro 7</td></tr>
+      <tr><td>"Yo" retórico — Israel bajo la ley</td><td>Käsemann, Wright</td><td><em>Prosopopeia</em>: habla de la humanidad en Adán o de Israel bajo el Sinaí</td></tr>
+      <tr><td>Vida cristiana intentada en la carne</td><td>Lectura pastoral integradora</td><td>Ro 7 diagnostica; Ro 8 es la alternativa disponible</td></tr>
+    </table>
+    <div class="key">Cualquiera sea la respuesta exegética, <strong>el fenómeno descrito es real y universalmente reconocible</strong>. Y notá la forma de la pregunta del v.24: no es "¿qué debo hacer?" sino <strong>"¿quién me librará?"</strong>. La solución no es una técnica. Es una persona.</div>
+  </section>
+
+  <section id="c8" data-k="santiago 1 deseo epithymia exelko deleazo carnada corazon leb kardia gestacion proceso">
+    <h2><span class="num">08</span>El proceso del pecado</h2>
+    <p class="tag">Santiago 1 · Gálatas 5 · el corazón bíblico</p>
+    <p><span class="ref">Stg 1:13-15</span> usa dos campos semánticos: <strong>caza y pesca</strong> (<span class="gr">exelko</span> = arrastrar fuera; <span class="gr">deleazo</span> = <em>poner carnada</em>) y <strong>gestación</strong> (concebir → dar a luz → llevar a término → engendrar muerte). Ambas suponen proceso, no evento.</p>
+    <p>Y dice <strong>"su propio deseo"</strong>. El anzuelo puede ser externo; el hambre que muerde es propia.</p>
+    <p><span class="gr">Epithymia</span> no es negativo en sí: Jesús la usa para su deseo de comer la Pascua <span class="ref">(Lc 22:15)</span>. El problema es el objeto y el desorden — el <em>ordo amoris</em> de Agustín: no amar cosas malas, sino amar cosas buenas desordenadamente.</p>
+    <div class="key"><span class="ref">Gá 5:17</span> suele citarse a medias. Dice también <strong>"y el Espíritu contra la carne"</strong>. El creyente no tiene un deseo malo y una obligación buena: tiene <strong>dos deseos</strong>.</div>
+    <p><strong>El corazón bíblico</strong> <span class="gr">(leb / kardia)</span> incluye pensamiento, voluntad, emoción, memoria y conciencia. Es aproximadamente lo que hoy llamaríamos <em>la mente en sentido amplio</em>. Por eso <span class="ref">Mr 7:21-23</span> localiza el problema exactamente donde lo localiza la neurociencia: <strong>no en el estímulo, sino en el sistema interno que le asigna valor</strong>.</p>
+  </section>
+
+  <section id="c9" data-k="romanos 6 8 logizomai esclavitud libertad phronema ya y todavia no espiritu habita">
+    <h2><span class="num">09</span>Esclavitud y libertad</h2>
+    <p class="tag">Romanos 6 y 8 · el "ya y todavía no"</p>
+    <p><strong>Romanos 6 en tres tiempos, en orden inviolable:</strong> SABER (un hecho ocurrió) → CONSIDERAR <span class="gr">logizomai</span>, verbo contable: asentarlo en el registro → PRESENTAR <span class="gr">paristemi</span>: poner los miembros a disposición. Hecho → conocimiento → apropiación → conducta. Nunca al revés.</p>
+    <p><strong>Romanos 8:</strong> una ley se vence con otra ley superior, no con esfuerzo (8:2) · dos <span class="gr">phronema</span> — mentalidades instaladas, no actos aislados (8:5-8) · el Espíritu <span class="gr">oikeo</span>, el mismo verbo que antes describía al pecado (8:9-11) · identidad de hijos y <em>Abba</em> (8:15).</p>
+    <div class="key"><span class="ref">Ro 8:13</span> es la fórmula exacta de la sinergia: <strong>el agente sos vos ("ustedes hacen morir"), el poder es el Espíritu ("por el Espíritu")</strong>. Ni pasividad ni autosuficiencia.</div>
+    <table class="tbl">
+      <tr><th>Ya</th><th>Todavía no</th></tr>
+      <tr><td>Muerto al pecado (Ro 6:2)</td><td>Hacer morir lo terrenal (Col 3:5)</td></tr>
+      <tr><td>Nueva criatura (2 Co 5:17)</td><td>Gemir esperando la redención del cuerpo (Ro 8:23)</td></tr>
+      <tr><td>Trasladado del reino de tinieblas (Col 1:13)</td><td>No haber llegado a la meta (Flp 3:12)</td></tr>
+    </table>
+    <div class="warn">Perder el <b>"ya"</b> produce esclavitud y esfuerzo estéril. Perder el <b>"todavía no"</b> produce triunfalismo y culpa aplastante cuando la experiencia no coincide con la retórica.</div>
+  </section>
+
+  <section id="c10" data-k="renovacion mente romanos 12 2 metamorphoo anakainosis efesios 4 colosenses 3 filipenses 4 meditacion hagah">
+    <h2><span class="num">10</span>La renovación de la mente</h2>
+    <p class="tag">El mandato · los textos · el protocolo</p>
+    <p><span class="ref">Ro 12:2</span> — cuatro observaciones exegéticas:</p>
+    <ul>
+      <li><strong>Los verbos están en pasiva y en presente continuo.</strong> No te transformás: <em>sos transformado</em>, y de forma continua.</li>
+      <li><span class="gr">Schema</span> (forma externa, molde) vs <span class="gr">morphe</span> (forma esencial). El mismo verbo de la transfiguración.</li>
+      <li><span class="gr">Anakainosis</span>: hacer nuevo <em>en calidad</em>, no reparar.</li>
+      <li><strong>El instrumento del cambio de vida es la mente</strong> — y el v.1 acaba de mandar presentar <em>el cuerpo</em>. Sin oposición entre ambos.</li>
+    </ul>
+    <p><strong>Efesios 4:22-24:</strong> despojarse → <em>ser renovados en la mente</em> → vestirse. Y el orden importa: nunca hay un simple "dejá de". El que robaba, que trabaje <strong>para tener qué compartir</strong>.</p>
+    <p><strong>Filipenses 4:6-9 — el protocolo más concreto del NT:</strong> gestión de la ansiedad → reemplazo de rumiación por oración agradecida → la paz <span class="gr">phroureo</span> (monta guardia como guarnición) → selección deliberada del contenido mental → práctica imitando un modelo concreto.</p>
+    <div class="chips"><span class="chip">Jos 1:8</span><span class="chip">Sal 1:2 · hagah</span><span class="chip">Sal 119:11</span><span class="chip">Dt 6:6-9</span><span class="chip">Is 26:3</span><span class="chip">2 Co 10:3-5</span><span class="chip">1 P 1:13</span></div>
+  </section>
+
+  <section id="c11" data-k="espiritu santo habita ezequiel 36 jeremias 31 fruto galatas enkrateia dominio propio">
+    <h2><span class="num">11</span>El Espíritu que habita</h2>
+    <p class="tag">La diferencia decisiva · el fruto</p>
+    <p>Lo que hace del cristianismo algo distinto de cualquier sistema de mejora personal: <strong>Dios mismo viene a habitar dentro.</strong> No ayuda desde afuera.</p>
+    <p><span class="ref">Ez 36:26-27</span> es la clave del nuevo pacto, y notá la causalidad: <em>pondré mi Espíritu dentro de ustedes</em> → <em>y haré que anden en mis estatutos</em>. No es una ley mejor: es una ley internalizada por un agente que habita.</p>
+    <p>Y muchas de sus funciones son <strong>cognitivas</strong>: enseña, recuerda, guía a la verdad, convence, da testimonio de la identidad, fortalece el hombre interior. <strong>El Espíritu opera sobre la mente.</strong></p>
+    <p><strong>El fruto como reverso exacto del programa de supervivencia:</strong></p>
+    <table class="tbl">
+      <tr><th>Fruto</th><th>Contrasta con</th></tr>
+      <tr><td>Amor</td><td>El interés propio como criterio por defecto</td></tr>
+      <tr><td>Gozo</td><td>La insatisfacción crónica del sistema de recompensa</td></tr>
+      <tr><td>Paz</td><td>El estado de alerta y vigilancia de amenaza</td></tr>
+      <tr><td>Paciencia</td><td>El descuento hiperbólico del futuro</td></tr>
+      <tr><td>Amabilidad · Bondad</td><td>La reactividad defensiva y la conservación propia</td></tr>
+      <tr><td>Fidelidad</td><td>La inconsistencia temporal de las preferencias</td></tr>
+      <tr><td>Mansedumbre</td><td>La respuesta de lucha ante la amenaza al estatus</td></tr>
+      <tr><td>Dominio propio</td><td>El secuestro del control por el impulso</td></tr>
+    </table>
+    <div class="key"><span class="gr">Enkrateia</span> (dominio propio) está <strong>al final de la lista del fruto</strong>. La Escritura no lo clasifica como capacidad natural que el creyente aporta, sino como algo que el Espíritu <em>produce</em>. No es la condición previa de la santificación: es uno de sus resultados.</div>
+  </section>
+
+  <!-- ================= PARTE III ================= -->
+  <section class="part-head" data-part="III">
+    <p class="part-label">Parte III — La síntesis</p>
+  </section>
+
+  <section id="c12" data-k="cerebro caido gobierno desorden objetos daño idolatria jeremias cisternas conciencia imagen de dios">
+    <h2><span class="num">12</span>Qué significa que el cerebro sea caído</h2>
+    <p class="tag">Tres formas distintas · no confundirlas</p>
+    <p><strong>Premisas:</strong> Dios creó al hombre como unidad y la llamó buena → la caída introdujo corrupción en el cuerpo → el cerebro es parte del cuerpo. <strong>Conclusión: el cerebro humano es un órgano caído.</strong></p>
+    <div class="warn"><b>Pero decir que el cerebro es caído no es decir que sea malo.</b> El sistema de amenazas nos mantiene vivos; el de recompensa permite querer y gozar; los hábitos liberan del costo de decidir todo; el vínculo social hace posible el amor. Nada de eso es pecado. Todo eso es diseño excelente.</div>
+    <p><strong>1 · Pérdida de gobierno.</strong> Los sistemas de supervivencia quedan sin superior. Un sirviente excelente convertido en amo. Pablo: el pecado <em>reina</em> <span class="ref">(Ro 5:21; 6:12)</span> — no dice que exista, dice que ocupó el trono.</p>
+    <p><strong>2 · Desorden de los objetos.</strong> Los sistemas funcionan pero apuntan mal. <span class="ref">Jer 2:13</span> señala <em>dos</em> males: abandonaron la fuente <strong>y</strong> cavaron cisternas rotas. La idolatría es un error de ingeniería del deseo.</p>
+    <p><strong>3 · Daño y desregulación.</strong> Trauma, privación temprana, adicción, enfermedad. <strong>Esto es sufrimiento bajo la caída, no culpa del que lo sufre</strong> <span class="ref">(Heb 4:15)</span>.</p>
+    <div class="warn"><b>Confundir las tres categorías produce daño pastoral grave.</b> Tratar como pecado lo que es daño es cruel. Tratar como daño lo que es rebelión es negligente. Y tratar como defecto de diseño lo que es un buen sistema mal gobernado lleva a despreciar el cuerpo en vez de someterlo.</div>
+    <p><strong>Por qué el cerebro actúa HOY así:</strong> porque eso es exactamente lo que es un ser humano separado de Dios — un organismo que debe garantizar por sí mismo su continuidad, su seguridad, su valor y su placer.</p>
+    <div class="key">Y la asimetría fundamental: la biología describe <em>cómo</em> funciona, pero <strong>no tiene recursos para decir que esté mal</strong>. Un organismo que maximiza supervivencia funciona correctamente. Que sepamos que algo está mal <span class="ref">(Ro 2:14-15)</span> es la huella de la imagen de Dios en una criatura caída. Sabemos que estamos mal porque recordamos, oscuramente, que fuimos hechos para otra cosa.</div>
+  </section>
+
+  <section id="c13" data-k="modelos reduccionismo dualismo paralelismo unidad niveles carta de amor plantinga gould">
+    <h2><span class="num">13</span>Cuatro modelos · tres fallan</h2>
+    <p class="tag">Cómo se relacionan espíritu y cerebro</p>
+    <table class="tbl">
+      <tr><th>Modelo</th><th>Dice</th><th>Por qué falla</th></tr>
+      <tr><td><strong>1 · Reduccionismo</strong><br>"todo es cerebro"</td><td>Lo espiritual es explicable como estado cerebral</td><td>Autorrefutante: si mis creencias son productos seleccionados por supervivencia, la creencia en el reduccionismo también lo es. Y correlación no es identidad.</td></tr>
+      <tr><td><strong>2 · Dualismo fuerte</strong><br>"el cerebro es irrelevante"</td><td>Dos esferas separadas; el pecado es del alma</td><td>Antibíblico (Elías duerme y come antes de la conversación; "la carne es débil"; el vino para el estómago de Timoteo) y pastoralmente devastador.</td></tr>
+      <tr><td><strong>3 · Paralelismo</strong><br>"no se tocan"</td><td>Ciencia el cómo, fe el porqué</td><td>Elegante evasión. Protege a la fe de la crítica al precio de volverla irrelevante. "Por sus frutos los conocerán" es una afirmación empírica.</td></tr>
+      <tr><td><strong>4 · Unidad con<br>distinción de niveles</strong></td><td>Dos niveles de descripción de una misma realidad</td><td><strong>La posición de este estudio.</strong></td></tr>
+    </table>
+    <p><strong>La analogía de la carta de amor:</strong> nivel físico (tinta y papel) · nivel lingüístico (sintaxis y semántica) · nivel personal (alguien diciéndole algo a otro). Los tres describen el mismo objeto y ninguno es falso. La química de la tinta es completamente correcta — y completamente incapaz de captar de qué se trata la carta. <strong>El nivel material es necesario sin ser suficiente ni explicativo.</strong></p>
+    <div class="key">Cuando el Espíritu obra en un creyente ocurre algo real en el nivel personal (Dios actúa) y algo real en el nivel neurológico (patrones cambian). <strong>No son dos eventos. Es un evento descrito en dos niveles.</strong> Y el nivel neurológico no explica el evento: lo encarna.</div>
+  </section>
+
+  <section id="c14" data-k="romanos 7 dos columnas tabla correspondencia nisbett wilson brecha intencion conducta loewenstein">
+    <h2><span class="num">14</span>Romanos 7 a dos columnas</h2>
+    <p class="tag">El ejercicio central del estudio</p>
+    <div class="warn"><b>Aclaración metodológica:</b> esto no afirma que Pablo hablara de neurociencia. Es la observación de que su descripción <b>fenomenológica</b> coincide con lo que hoy describimos mecánicamente. Eso no le agrega ni le quita autoridad al texto: indica que estaba describiendo algo real.</div>
+    <div class="dual">
+      <div class="scr"><h4>Romanos 7 · parafraseado</h4>
+        <p><strong>v.15a</strong> No entiendo lo que hago</p>
+        <p><strong>v.15b</strong> No hago lo que quiero, sino lo que aborrezco</p>
+        <p><strong>v.16</strong> Estoy de acuerdo en que la ley es buena</p>
+        <p><strong>v.17</strong> Ya no soy yo el que lo hace</p>
+        <p><strong>v.18b</strong> El querer está en mí, pero no el hacer</p>
+        <p><strong>v.21</strong> Cuando quiero hacer el bien, el mal está presente</p>
+        <p><strong>v.23</strong> Otra ley en mis miembros me lleva cautivo</p>
+        <p><strong>v.24</strong> ¿Quién me librará?</p>
+      </div>
+      <div class="neu"><h4>Descripción neurocientífica</h4>
+        <p>No hay acceso introspectivo a las causas de la propia conducta (Nisbett y Wilson, 1977)</p>
+        <p>Disociación entre sistema deliberado (metas) y automático (hábitos condicionados)</p>
+        <p>La aprobación cognitiva del estándar permanece intacta. <strong>Saber no basta</strong></p>
+        <p>La conducta automatizada se vive como no autoral: se ejecuta un programa</p>
+        <p>Brecha intención-conducta: la intención predice apenas una fracción del comportamiento</p>
+        <p>Efecto irónico (Wegner): monitorear la no-ocurrencia mantiene el contenido activo</p>
+        <p>Competencia entre sistemas; el automático gana. Secuestro atencional y conductual</p>
+        <p style="color:#7E8C93"><em>— la tabla se rompe acá —</em></p>
+      </div>
+    </div>
+    <div class="key">La neurociencia describe el problema. <strong>No tiene un versículo 24 ni un versículo 25.</strong> Puede ofrecer intervenciones parciales y valiosas, pero no puede responder "¿quién me librará?" — porque la pregunta pide un libertador. Todo lo que puede ofrecer es al mismo sistema tratando de arreglarse a sí mismo. Y ese es exactamente el diagnóstico de Pablo.</div>
+  </section>
+
+  <section id="c15" data-k="bucle santiago huir jose potifar no proveais entorno vergüenza confesion chalmers afecto expulsivo">
+    <h2><span class="num">15</span>El bucle: de deseo a muerte</h2>
+    <p class="tag">Santiago 1 alineado con el bucle del hábito</p>
+    <div class="dual">
+      <div class="scr"><h4>Santiago 1:14-15</h4>
+        <p><strong>"Su propio deseo"</strong></p>
+        <p><strong>"Lo arrastra"</strong> <span class="gr">exelko</span></p>
+        <p><strong>"Lo seduce con carnada"</strong> <span class="gr">deleazo</span></p>
+        <p><strong>"El deseo concibe"</strong></p>
+        <p><strong>"Da a luz el pecado"</strong></p>
+        <p><strong>"El pecado consumado"</strong> <span class="gr">apoteleo</span></p>
+        <p><strong>"Engendra muerte"</strong></p>
+      </div>
+      <div class="neu"><h4>Correlato</h4>
+        <p>Disposición previa del sistema motivacional. El anzuelo requiere hambre</p>
+        <p>Secuestro atencional. No dice que lo empuje: dice que lo arrastra</p>
+        <p>Señal condicionada. <strong>La carnada no es la comida: es lo que parece comida</strong></p>
+        <p>Punto de compromiso. Entre carnada y nacimiento hay gestación</p>
+        <p>Ejecución de la conducta</p>
+        <p>Consolidación, automatización, escalada</p>
+        <p>Deterioro del sistema, de las relaciones, de la capacidad de gozo — y separación</p>
+      </div>
+    </div>
+    <div class="key"><strong>La batalla no se gana en el momento de la tentación.</strong> Para cuando el anzuelo está en el agua y el pez tiene hambre, el resultado ya es altamente probable. Se gana en dos lugares anteriores: la gestión de señales y la formación del deseo.</div>
+    <p><strong>Frente 1 — gestión de señales.</strong> El consejo bíblico es sorprendentemente poco heroico. No dice "resistí valientemente", dice <em>huí</em>: <span class="ref">1 Co 6:18</span> · <span class="ref">2 Ti 2:22</span> · <span class="ref">1 Co 10:14</span>. José sale corriendo y deja el manto <span class="ref">(Gn 39:12)</span>: pierde la ropa, salva la integridad. Y <span class="ref">Ro 13:14</span>: <em>no hagan provisión</em> — gestión logística de la tentación.</p>
+    <div class="warn">La Biblia enseña la estrategia que la investigación identifica como <b>más eficaz</b> (modificar el entorno) y prácticamente no enseña la que identifica como <b>menos eficaz</b> (resistencia frontal al impulso ya activo).</div>
+    <p><strong>Frente 2 — formación del deseo.</strong> La Escritura no busca que resistas lo que deseás: busca que <strong>desees otra cosa</strong>. <span class="ref">Sal 37:4</span> · <span class="ref">Sal 34:8</span> · <span class="ref">Flp 3:8</span> (Pablo no renunció por deber: <em>reevaluó</em> al encontrar algo mejor). Chalmers, 1819: <em>el poder expulsivo de un nuevo afecto</em>. Los sistemas de deseo no se apagan — se reemplazan.</p>
+    <p><strong>El ciclo de la vergüenza:</strong> caída → vergüenza → estado negativo → aumento del anhelo de alivio → caída. La reacción intuitiva ("tengo que sentirme peor") <strong>acelera el ciclo</strong>. <span class="ref">2 Co 7:10</span> distingue la tristeza que mueve hacia Dios de la que encierra en uno mismo — que lleva al ocultamiento, exactamente la respuesta de Adán. Por eso la práctica bíblica es la <strong>confesión</strong> <span class="ref">(1 Jn 1:9; Stg 5:16)</span>: rompe el ciclo en el punto donde se sostiene.</p>
+  </section>
+
+  <section id="c16" data-k="renovacion que no es tcc terapia cognitiva pensamiento positivo deseo contemplacion 2 corintios 3 18 idolos salmo 115">
+    <h2><span class="num">16</span>Qué es y qué no es la renovación</h2>
+    <p class="tag">Deslinde · definición · contemplación</p>
+    <p><strong>No es:</strong> pensamiento positivo (el primer adjetivo de <span class="ref">Flp 4:8</span> es <em>verdadero</em>) · autosugestión o decreto · supresión de emociones (Jesús llora, se angustia, se indigna) · un evento único.</p>
+    <p><strong>Y no es terapia cognitivo-conductual con versículos.</strong> La diferencia no está en la forma de la práctica, sino en tres lugares:</p>
+    <table class="tbl">
+      <tr><th></th><th>TCC</th><th>Renovación bíblica</th></tr>
+      <tr><td>Agente</td><td>El sujeto aplicando una técnica</td><td>Dios — el verbo está en pasiva</td></tr>
+      <tr><td>Criterio</td><td>Funcionalidad: si ayuda, sirve</td><td>La verdad revelada, aunque incomode</td></tr>
+      <tr><td>Fin</td><td>El bienestar del sujeto</td><td>Conformidad a Cristo y discernimiento de la voluntad de Dios</td></tr>
+    </table>
+    <div class="key"><strong>Definición de trabajo:</strong> proceso continuo, iniciado y sostenido por el Espíritu, por el cual la totalidad de la vida interior —categorías, criterios de valor, afectos, percepción de sí, de Dios y del mundo— es reconfigurada según la verdad revelada, con el resultado de que la persona llega a querer, discernir y hacer <strong>lo que antes ni siquiera podía ver</strong>.</div>
+    <p><strong>El deseo reordenado, no extinguido.</strong> El diagnóstico bíblico no es "querés demasiado". Es: <em>estás gastando tu capacidad de deseo en cosas que no pueden pagarte lo que prometen</em> <span class="ref">(Is 55:1-2)</span>. De ahí que la práctica cristiana tenga dos movimientos: negativo (ayuno, huida, mortificación = reducción de sobrecarga) y positivo (contemplación, adoración, gratitud = reorientación). <strong>El primero solo produce un asceta amargado; el segundo solo, un consumidor religioso.</strong></p>
+    <p><strong><span class="ref">2 Co 3:18</span> — el mecanismo:</strong> somos transformados <em>contemplando</em>, en pasiva, de gloria en gloria, por el Espíritu. <strong>Nos parecemos a aquello a lo que le prestamos atención sostenida.</strong></p>
+    <div class="warn">El contrapunto es despiadado: <span class="ref">Sal 115:8</span> — los que hacen ídolos <b>serán semejantes a ellos</b>. Tienen boca y no hablan, ojos y no ven. La ley es simétrica: te volvés como aquello que mirás. La única pregunta es qué estás mirando.</div>
+  </section>
+
+  <section id="c17" data-k="neuroplasticidad hebb mielinizacion condiciones del cambio atencion repeticion espaciada sueño lally 66 dias extincion recaida">
+    <h2><span class="num">17</span>Neuroplasticidad</h2>
+    <p class="tag">La gramática del cambio · tiempos reales</p>
+    <p><strong>Lo que NO prueba:</strong> no prueba que Dios exista, ni explica la conversión. <strong>Lo que SÍ establece:</strong> que el cerebro es un órgano <em>diseñado para ser modificado por la experiencia</em>.</p>
+    <div class="key">Si Dios quiso que el ser humano fuera transformable en esta vida —y las Escrituras lo afirman de principio a fin— uno esperaría encontrar en su biología un mecanismo que lo haga posible. <strong>El mandato de Ro 12:2 supone una mente que puede ser renovada. Y resulta que lo es.</strong> No es una prueba: es una congruencia, del mismo tipo que hay entre el mandato de trabajar y la existencia de manos.</div>
+    <table class="tbl">
+      <tr><th>Condición del cambio neural</th><th>Práctica bíblica correspondiente</th></tr>
+      <tr><td>Atención focalizada (la exposición distraída produce mucho menos cambio)</td><td>Meditación <span class="gr">hagah</span> — rumiar, no leer rápido <span class="ref">(Sal 1:2)</span></td></tr>
+      <tr><td>Repetición espaciada en el tiempo</td><td>De día y de noche; al acostarte y al levantarte <span class="ref">(Dt 6:7)</span>; orar sin cesar</td></tr>
+      <tr><td>Carga emocional</td><td>Temor, gozo, gratitud, asombro. Y el canto: texto + melodía + repetición + afecto</td></tr>
+      <tr><td>Práctica activa, no recepción pasiva</td><td><span class="ref">Stg 1:22</span> — hacedores, no solo oidores, <em>engañándose a ustedes mismos</em></td></tr>
+      <tr><td>Sueño</td><td>El sueño como don <span class="ref">(Sal 127:2)</span>; el sábado; Elías en 1 Reyes 19</td></tr>
+    </table>
+    <div class="warn"><b>Honestidad necesaria:</b> nada de esto prueba que la práctica cristiana "funcione" por estos mecanismos, ni que su valor consista en su eficacia neurológica. Uno no medita para optimizar la consolidación de memoria: medita porque busca a Dios. <b>El momento en que hacés las disciplinas por sus beneficios medibles es el momento en que dejan de ser lo que son.</b></div>
+    <p><strong>Tiempos reales:</strong> Lally et al. (2010) encontró una mediana de ~66 días para automatizar una conducta simple, con rango de tres semanas a más de ocho meses. Y <strong>los lapsos ocasionales no impidieron la formación del hábito</strong> <span class="ref">(Pr 24:16)</span>. La idea de "21 días" es falsa.</p>
+    <div class="key"><strong>Los circuitos antiguos no se borran.</strong> La extinción no elimina el aprendizaje original: crea uno nuevo que lo inhibe. Por eso existe la recaída y la reactivación contextual. El camino viejo sigue ahí, sin uso, cubierto de pasto, pero existente. Por eso <span class="ref">1 Co 10:12</span>, <span class="ref">Mt 6:13</span> (pedir <em>no</em> ser puesto en la situación) y <span class="ref">1 Co 9:27</span>. La vigilancia permanente no es neurosis: es realismo.</p>
+  </section>
+
+  <section id="c18" data-k="palabra hebreos 4 12 cerebro predictivo barrett friston memorizacion salmo 119 11 gollwitzer intenciones implementacion lectio">
+    <h2><span class="num">18</span>Por qué la Palabra tiene efecto real</h2>
+    <p class="tag">El cerebro predictivo · memorización</p>
+    <p>Las afirmaciones bíblicas sobre la Palabra son <strong>causales</strong>: es viva y eficaz <span class="ref">(Heb 4:12)</span>, no vuelve vacía <span class="ref">(Is 55:11)</span>, es semilla que regenera <span class="ref">(1 P 1:23)</span>. No es descrita como información sino como <strong>agente</strong>. Eso este estudio no lo explica ni pretende explicarlo.</p>
+    <p><strong>Y sin embargo</strong> esa palabra entra por ojos u oídos concretos, se procesa en lenguaje y modifica categorías de pensamiento. Dios eligió el lenguaje como medio.</p>
+    <p><strong>El cerebro predictivo</strong> (Friston, Clark, Barrett): el cerebro no recibe pasivamente el mundo, genera predicciones y usa los datos para corregir el error. Consecuencia: <strong>lo que percibís está determinado en buena medida por lo que esperás percibir</strong>, y las emociones se construyen con conceptos aprendidos. Sin el concepto, no hay la emoción.</p>
+    <table class="tbl">
+      <tr><th>Lo que aporta la Escritura</th><th>Efecto sobre el sistema predictivo</th></tr>
+      <tr><td>Identidad: hijo, amado, elegido, sellado</td><td>Cambia el modelo de sí mismo con que se interpreta cada evento</td></tr>
+      <tr><td>Un Dios que gobierna la historia</td><td>La adversidad deja de ser amenaza aleatoria y pasa a ser providencia</td></tr>
+      <tr><td>Promesa de futuro: resurrección, herencia</td><td>Ataca directamente el descuento hiperbólico</td></tr>
+      <tr><td>Criterio de valor externo al desempeño</td><td>Desacopla la autoestima del resultado — base del estrés por estatus</td></tr>
+      <tr><td>Mandato de gratitud <span class="ref">(1 Ts 5:18)</span></td><td>Reorienta la atención contra el sesgo de negatividad</td></tr>
+    </table>
+    <p>Por eso Pablo ora repetidamente no para que hagan más sino para que <strong>sepan</strong> <span class="ref">(Col 1:9; Ef 1:18-19; Ef 3:18)</span>. No es intelectualismo: es que lo que una persona sabe con certeza determina cómo percibe, siente y actúa.</p>
+    <div class="key"><strong>Por qué memorizar no es un ejercicio escolar:</strong> en la ventana de decisión —segundos— lo único disponible es lo que ya está en memoria. No hay tiempo de buscar. Jesús en el desierto respondió tres veces citando Deuteronomio, de memoria, inmediatamente. Es el equivalente de una <em>intención de implementación</em> pre-cargada (Gollwitzer), con la diferencia de que el contenido no es una estrategia autogenerada.</div>
+    <p><strong>Corolario incómodo:</strong> el consumo digital típico (atención fragmentada, exposición única, afecto reactivo, recepción pasiva, sueño desplazado) es aproximadamente el reverso exacto de las condiciones del cambio profundo. La <em>lectio divina</em> —poco texto, muchas veces, despacio, con respuesta activa— no es nostalgia: está alineada con el modo en que una mente se transforma.</p>
+  </section>
+
+  <section id="c19" data-k="identidad conducta indicativo imperativo logizomai romanos 6 11 legalismo apego abba vinculo seguro">
+    <h2><span class="num">19</span>Identidad antes que conducta</h2>
+    <p class="tag">El orden paulino · por qué también funciona así</p>
+    <p>Todas las cartas de Pablo tienen la misma bisagra: primero lo que Dios hizo, después lo que hay que hacer. Romanos 1-11 → 12. Efesios 1-3 → 4. Colosenses 1-2 → 3. La palabra es siempre <strong>"por lo tanto"</strong>. <strong>El imperativo se apoya sobre el indicativo, nunca al revés.</strong></p>
+    <table class="tbl">
+      <tr><th>Conducta → identidad</th><th>Identidad → conducta</th></tr>
+      <tr><td>Soy lo que logro</td><td>Soy lo que Dios declaró que soy</td></tr>
+      <tr><td>Cada fracaso amenaza mi identidad</td><td>Cada fracaso es incoherencia, no destrucción</td></tr>
+      <tr><td>La motivación es el miedo a dejar de ser</td><td>La motivación es la coherencia con lo que ya soy</td></tr>
+      <tr><td>El fracaso produce vergüenza y ocultamiento</td><td>El fracaso produce confesión y regreso</td></tr>
+      <tr><td>La lucha es <em>por</em> conseguir aceptación</td><td>La lucha es <em>desde</em> la aceptación</td></tr>
+    </table>
+    <p><strong>Por qué también es correcto mecánicamente:</strong> una identidad funciona como <em>filtro previo a la deliberación</em> — elimina opciones antes de que haya que resistirlas. No hay que gastar autocontrol en algo que ni siquiera se evaluó.</p>
+    <div class="warn"><b>Y el reverso:</b> la amenaza a la identidad degrada el control ejecutivo. Un sistema de motivación religiosa basado en "si no cumplo, dejo de ser aceptado" instala una amenaza permanente y <b>degrada exactamente la capacidad que pretende reforzar</b>. El legalismo no solo es malo teológicamente: es contraproducente mecánicamente.</div>
+    <p><span class="ref">Ro 2:4</span> — es <strong>su benignidad</strong> la que guía al arrepentimiento. No su amenaza. Y <span class="ref">Ro 8:15</span> contrapone explícitamente el espíritu de esclavitud para volver al temor con el espíritu de adopción: <em>Abba</em>.</p>
+  </section>
+
+  <section id="c20" data-k="cuerpo sueño ayuno sabado elias 1 reyes 19 descanso ejercicio disciplina">
+    <h2><span class="num">20</span>El cuerpo en la santificación</h2>
+    <p class="tag">Factores reales · el caso Elías · el ayuno</p>
+    <p><strong>Determinantes fisiológicos del autocontrol:</strong> sueño (el factor individual más potente y el más descuidado) · estado metabólico · movimiento · estrés crónico · sustancias · sobrecarga cognitiva.</p>
+    <div class="key"><strong>El caso Elías <span class="ref">(1 R 19)</span>:</strong> tras la mayor victoria espiritual de su vida, está bajo un arbusto pidiendo morirse. La respuesta de Dios, en orden: <strong>dormir, comer, dormir otra vez, comer otra vez, caminar</strong> — y recién entonces la conversación en el monte. Cualquiera que atienda a alguien en crisis sin considerar sueño, alimentación y aislamiento antes de diagnosticar falta de fe está siendo menos cuidadoso que Dios en 1 Reyes 19.</div>
+    <p>Y la Escritura trata todo esto con naturalidad: el sábado es mandamiento con fundamento creacional · el sueño es don <span class="ref">(Sal 127:2)</span> · Jesús no dice "les falta fe" en Getsemaní sino que <em>la carne es débil</em> · Pablo le recomienda vino a Timoteo por su estómago · el Salmo 32 describe los efectos físicos del pecado no confesado.</p>
+    <p><strong>El ayuno</strong> aparece como práctica esperada ("<em>cuando</em> ayunen", no "si"). Interrumpe un patrón automático y lo hace visible · reduce la sobrecarga del sistema de recompensa · instala un recordatorio corporal recurrente · <strong>demuestra experiencialmente que un apetito puede no ser obedecido sin que pase nada catastrófico</strong>. Ninguno de estos efectos es la razón bíblica del ayuno —la razón es buscar a Dios— pero no es casual que la práctica ordenada para buscar a Dios sea, además, la que reordena los apetitos.</p>
+    <div class="warn">El ayuno alimentario no es apropiado para todas las personas ni en toda circunstancia. Quien tenga alguna condición de salud relevante debería consultar a un profesional antes. La privación puede aplicarse a otras cosas —pantallas, entretenimiento, consumo— con la misma lógica.</div>
+  </section>
+
+  <section id="c21" data-k="comunidad iglesia unos a otros confesion hebreos 3 13 autoengaño aislamiento corregulacion cuerpo">
+    <h2><span class="num">21</span>La comunidad</h2>
+    <p class="tag">Órgano de regeneración, no accesorio</p>
+    <p>Casi toda la discusión moderna sobre cambio personal está formulada en singular. <strong>El NT no.</strong> La mayoría de sus imperativos están en plural, y una porción enorme son recíprocos.</p>
+    <div class="key"><span class="ref">Heb 3:13</span> es preciso: exhórtense <strong>cada día</strong>, <strong>para que ninguno se endurezca por el engaño del pecado</strong>. La Escritura asigna a la comunidad la función específica de contrarrestar el autoengaño, en frecuencia diaria. Es exactamente lo que un sistema con autoengaño estructural <span class="ref">(Jer 17:9)</span> necesita: un corrector externo.</div>
+    <table class="tbl">
+      <tr><th>Práctica bíblica</th><th>Función en el sistema</th></tr>
+      <tr><td>Confesión mutua <span class="ref">(Stg 5:16)</span></td><td>Rompe el aislamiento que sostiene el ciclo de vergüenza</td></tr>
+      <tr><td>Exhortación diaria <span class="ref">(Heb 3:13)</span></td><td>Corrección externa del autoengaño</td></tr>
+      <tr><td>Llevar las cargas <span class="ref">(Gá 6:2)</span></td><td>Corregulación del estrés</td></tr>
+      <tr><td>No dejar de congregarse</td><td>Exposición repetida y espaciada, en contexto afectivo</td></tr>
+      <tr><td>Cantar juntos <span class="ref">(Ef 5:19)</span></td><td>Consolidación con carga afectiva y sincronía grupal</td></tr>
+      <tr><td>Imitación de modelos <span class="ref">(1 Co 11:1)</span></td><td>Aprendizaje observacional — el modo primario humano</td></tr>
+    </table>
+    <p><strong>Conclusión práctica, a contramano de la época:</strong> quien intenta transformarse a solas está usando la peor configuración posible. No por falta de fuerza: porque el diseño no es individual. La imagen del NT no es la de individuos salvados que después se agrupan, sino la de un <strong>cuerpo</strong> — donde un miembro aislado no es autónomo: es amputado.</p>
+  </section>
+
+  <section id="c22" data-k="santificacion progresiva ya y todavia no justificacion glorificacion zaqueo instantaneo redimir">
+    <h2><span class="num">22</span>Por qué es progresiva</h2>
+    <p class="tag">La pregunta más dolorosa · y la excepción</p>
+    <p><strong>Dos respuestas malas:</strong> "te falta fe o una experiencia" (produce una espiral de búsqueda y culpa; y Pablo mismo dice que no ha alcanzado, <span class="ref">Flp 3:12</span>) y "no importa, estás perdonado" (verdadero pero, como consuelo terminal, anula todo el lenguaje sobre crecimiento).</p>
+    <p><strong>La estructura real:</strong> justificación y regeneración son instantáneas y completas · la santificación posicional también (<span class="ref">1 Co 1:2</span> llama santos a los corintios, que eran un desastre) · la santificación progresiva es gradual y de por vida · la glorificación es futura. <strong>La lucha sigue porque estamos en la cuarta etapa.</strong></p>
+    <div class="key"><strong>Por qué tiene que ser progresiva:</strong> si Dios borrara instantáneamente todos los patrones mentales, no quedaría prácticamente nada de la persona — esos patrones <em>son</em>, en buena medida, la persona. Eso no sería santificación sino aniquilación seguida de otra creación. Y Dios <strong>redime</strong>, que por definición significa recuperar algo que ya existía. Pablo transformado sigue siendo reconociblemente Pablo. La materia prima es la misma; el gobierno cambió.</div>
+    <div class="warn"><b>Pero hay que decir lo contrario también, o esto es naturalismo con vocabulario piadoso.</b> Hay cambios instantáneos y permanentes que no se explican por consolidación gradual: Zaqueo devuelve el mismo día; el gadareno está en su juicio esa tarde; Pablo pasa de perseguir a predicar en días. <b>El nivel neurológico es el sustrato del cambio, no su causa.</b> Si el agente es Dios, no está limitado por la velocidad típica del proceso.<br><br>El modo <b>ordinario</b> es progresivo. El <b>extraordinario</b> existe y es de Dios. Y quien recibió lo ordinario no recibió menos.</div>
+  </section>
+
+  <section id="c23" data-k="limites conciencia problema dificil chalmers obligacion moral hume libre albedrio agente sentido">
+    <h2><span class="num">23</span>Los límites del modelo</h2>
+    <p class="tag">Lo que la neurociencia no explica</p>
+    <p>Un estudio que solo muestre convergencias es propaganda. Cinco cosas que el nivel neurológico <strong>no</strong> describe:</p>
+    <ul>
+      <li><strong>Por qué hay un sujeto que experimenta.</strong> El "problema difícil" (Chalmers) no es una laguna de datos: es una laguna conceptual.</li>
+      <li><strong>Por qué algo está mal.</strong> La biología explica por qué tenemos intuiciones morales; no puede fundamentar una obligación. Que la crueldad sea costosa no explica por qué es <em>mala</em>.</li>
+      <li><strong>Quién es responsable.</strong> La Escritura afirma simultáneamente la esclavitud del pecador y su responsabilidad, sin considerarlo contradictorio.</li>
+      <li><strong>Quién actúa.</strong> Ninguna descripción de mecanismos identifica un agente. El método está construido para excluir esa pregunta — y hace bien. Pero excluirla no es responderla negativamente.</li>
+      <li><strong>Para qué es todo esto.</strong> Puede describir los correlatos de la esperanza; no puede decir si hay algo que esperar.</li>
+    </ul>
+    <div class="key">Esas cinco preguntas son exactamente las que la revelación responde. Por eso el modelo de dos niveles no es una concesión: es la afirmación de que hacen falta los dos, y de que solo uno responde las preguntas que importan.</div>
+  </section>
+
+  <section id="c24" data-k="errores gemelos reduccionismo dualismo filipenses 2 12 13 quietismo moralismo encarnacion">
+    <h2><span class="num">24</span>Los dos errores gemelos</h2>
+    <p class="tag">Síntomas y antídotos</p>
+    <div class="dual">
+      <div class="scr"><h4>Error reduccionista — síntomas</h4>
+        <p>Explicar la convicción de pecado como fenómeno de la ínsula</p>
+        <p>Recomendar la oración por sus efectos sobre la variabilidad cardíaca</p>
+        <p>Elegir una práctica espiritual por su rendimiento medible</p>
+        <p>La adoración como técnica de regulación emocional</p>
+        <p>Conservar la utilidad del cristianismo y perder interés en su verdad</p>
+        <p><strong>Antídoto:</strong> <span class="ref">1 Co 15:19</span> — "somos los más dignos de lástima". Pablo no dijo "al menos nos hizo bien".</p>
+      </div>
+      <div class="neu"><h4>Error dualista — síntomas</h4>
+        <p>Atribuir a causas espirituales problemas de causa corporal</p>
+        <p>Despreciar descanso, alimentación o tratamiento médico como "carnal"</p>
+        <p>Decirle a alguien con depresión que ore más</p>
+        <p>Esperar que la conversión resuelva en un día lo que llevó veinte años construirse</p>
+        <p>Avergonzar a quien lucha en lugar de acompañarlo</p>
+        <p><strong>Antídoto:</strong> la encarnación. Dios se hizo cuerpo, comió, se cansó, lloró, sangró y resucitó <em>con cuerpo</em>.</p>
+      </div>
+    </div>
+    <p class="thesis" style="font-size:18px">Trabajá como si dependiera de vos; sabé que depende de Dios; y entendé que trabajar es precisamente el modo en que él suele obrar.</p>
+    <p><span class="ref">Flp 2:12-13</span> — separados son dos herejías. "Ocúpense en su salvación" sin el v.13 es moralismo. "Dios produce en ustedes" sin el v.12 es quietismo. Unidos por ese <strong>"porque"</strong>: la actividad del creyente se funda en la de Dios. No compiten. <strong>Y notá qué produce Dios: el querer y el hacer.</strong> No solo la capacidad de obedecer — el deseo mismo.</p>
+  </section>
+
+  <section id="c25" data-k="marco practico cinco capas posicion afectos mente entorno cuerpo comunidad diagnostico">
+    <h2><span class="num">25</span>Marco práctico · cinco capas</h2>
+    <p class="tag">De lo profundo a lo superficial · el orden importa</p>
+    <div class="warn">Trabajar las capas superficiales sin las profundas es exactamente lo que produce el ciclo de fracaso de Romanos 7. <b>La mayoría interviene en la capa 4 —más restricciones— cuando el hueco está en la 1 o la 2.</b></div>
+
+    <div class="layer">
+      <div class="lv">01</div>
+      <div>
+        <h3>Fundamento · la posición</h3>
+        <p>Conocer y contar con lo que es cierto de vos en Cristo, con independencia del desempeño. Textos de referencia: <span class="ref">Ef 1:3-14</span> y <span class="ref">Ro 8</span>. Volver ahí <em>primero</em> después de cada caída, no después de haberte castigado lo suficiente. Distinguir convicción (señala un acto, mueve hacia Dios) de condenación (ataca a la persona, aleja).</p>
+        <p class="miss">Falta si: cada fracaso se siente como amenaza a la relación con Dios, no como incoherencia dentro de una relación segura.</p>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="lv">02</div>
+      <div>
+        <h3>Afectos · qué es lo que querés</h3>
+        <p>Contemplación sostenida <span class="ref">(2 Co 3:18)</span>: tiempo real, mirar hasta que produzca algo, no hasta cumplir una cuota. Gratitud deliberada y específica. Adoración con otros. Y ante una tentación recurrente, preguntar <strong>qué está prometiendo</strong> — casi siempre promete algo legítimo (consuelo, descanso, valor, pertenencia) por una vía falsa.</p>
+        <p class="miss">Falta si: obedecés por deber, con la sensación permanente de estar renunciando a algo mejor.</p>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="lv">03</div>
+      <div>
+        <h3>Mente · contenido y consolidación</h3>
+        <p>Memorización dirigida a tus áreas concretas de lucha. Meditación lenta y repetida sobre porciones cortas. Frecuencia diaria sostenida, no sesiones largas y esporádicas. Escribir lo que ves. Auditoría de lo que entra: qué contenido, cuántas horas, qué modelo del mundo instala.</p>
+        <p class="miss">Falta si: en el momento crítico no hay nada disponible en la cabeza excepto el impulso.</p>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="lv">04</div>
+      <div>
+        <h3>Entorno · gestión de señales</h3>
+        <p>Identificar las señales reales —no solo objetos: horarios, estados emocionales, lugares, niveles de cansancio. Registrar dos semanas y buscar el patrón. Eliminar el <em>acceso</em>, no la intención de acceder: un obstáculo físico vale más que veinte promesas. No hacer provisión <span class="ref">(Ro 13:14)</span>. Aplicar la regla de la huida: salir, no argumentar. Tener el "si pasa X, hago Y" decidido de antemano.</p>
+        <p class="miss">Falta si: peleás la misma batalla todos los días en el mismo lugar, y la perdés con la misma frecuencia.</p>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="lv">05</div>
+      <div>
+        <h3>Cuerpo y comunidad · las condiciones</h3>
+        <p>Sueño suficiente y regular (la intervención de mayor rendimiento y la más ignorada). Descanso semanal real. Movimiento. Comida y horarios estables. <strong>Al menos una persona que sepa la verdad completa</strong> — no un grupo genérico: una persona concreta con permiso para preguntar. Congregarse, incluyendo los días en que no dan ganas. Confesión oportuna, no diferida.</p>
+        <p class="miss">Falta si: perdés sistemáticamente los días de cansancio, y hay áreas que ninguna persona conoce.</p>
+      </div>
+    </div>
+
+    <div class="key"><strong>Tres reglas de uso.</strong> Diagnosticar antes de intervenir: ante una caída recurrente, preguntar en qué capa está el hueco. No confundir el marco con el agente: un incrédulo puede aplicar las capas 3, 4 y 5 y mejorar; no obtendrá la 1 ni la 2, que son las que importan y son don. Y los tiempos son largos: meses, no días.</div>
+  </section>
+
+  <section id="c26" data-k="conclusion resurreccion cuerpo apocalipsis 21 esperanza 1 corintios 15 redencion">
+    <h2><span class="num">26</span>La mente redimida y el cuerpo resucitado</h2>
+    <p class="tag">Dónde termina esto</p>
+    <p>La esperanza cristiana no es que el alma escape del cuerpo. Es la <strong>resurrección</strong>. <span class="ref">1 Co 15</span>: se siembra corruptible y resucita incorruptible — <em>cuerpo</em> en los cuatro casos. Y <span class="ref">Ro 8:23</span>: no la liberación del cuerpo, <strong>su redención</strong>.</p>
+    <p>El sistema de supervivencia que hoy nos gobierna no será destruido: será restituido a su lugar, en un mundo donde ya no habrá que sobrevivir. En una ciudad sin muerte, ni llanto, ni dolor <span class="ref">(Ap 21:4)</span>, un sistema calibrado para evitar la muerte finalmente podrá dejar de trabajar. Y el deseo no será extinguido: será saciado <span class="ref">(Ap 21:6)</span>. El hambre estructural que produjo tanta idolatría encontrará por fin aquello para lo que fue hecha.</p>
+    <p class="thesis" style="font-style:normal; font-size:17.5px; font-family:'Spectral',serif">Mientras tanto: contá con lo que Dios declaró sobre vos; mirá a Cristo hasta que lo quieras más que a lo otro; llenate la cabeza de lo que es verdadero; sacate de encima lo que te dispara; dormí, comé, descansá; no camines solo; confesá temprano; y cuando caigas —porque vas a caer— volvé rápido, sin pagar peaje, porque ya fue pagado.</p>
+    <p style="text-align:right; font-family:'Bodoni Moda',serif; font-size:19px; color:var(--gold); font-style:italic">El que comenzó la buena obra la va a terminar.</p>
+  </section>
+
+  </div>
+
+  <p class="empty" id="empty">Sin resultados. Probá con otro término.</p>
+
+  <footer>
+    <p>Guía de consulta del estudio en PDF (60 páginas). Las referencias remiten a la NTV; el texto bíblico está parafraseado — leelo completo en tu Biblia.</p>
+    <p><em>Examínenlo todo; retengan lo bueno.</em> — 1 Tesalonicenses 5:21</p>
+  </footer>
+</main>
+</div>
+
+<script>
+(function(){
+  const parts = [
+    {label:'I — El cerebro que heredamos', items:[['c1','Los tres cerebros'],['c2','Supervivencia como programa base'],['c3','El circuito de recompensa'],['c4','Por qué la razón pierde']]},
+    {label:'II — Lo que dicen las Escrituras', items:[['c5','La caída y sus consecuencias'],['c6','La sarx: la carne'],['c7','Romanos 7: la guerra interior'],['c8','El proceso del pecado'],['c9','Esclavitud y libertad'],['c10','La renovación de la mente'],['c11','El Espíritu que habita']]},
+    {label:'III — La síntesis', items:[['c12','Qué significa cerebro caído'],['c13','Cuatro modelos · tres fallan'],['c14','Romanos 7 a dos columnas'],['c15','El bucle: de deseo a muerte'],['c16','Qué es y qué no es la renovación'],['c17','Neuroplasticidad'],['c18','Por qué la Palabra tiene efecto'],['c19','Identidad antes que conducta'],['c20','El cuerpo en la santificación'],['c21','La comunidad'],['c22','Por qué es progresiva'],['c23','Los límites del modelo'],['c24','Los dos errores gemelos'],['c25','Marco práctico · cinco capas'],['c26','La mente redimida']]}
+  ];
+  const nav = document.getElementById('nav');
+  let n = 0, html = '';
+  parts.forEach(p=>{
+    html += '<p class="rail-part">'+p.label+'</p>';
+    p.items.forEach(it=>{
+      n++;
+      html += '<a href="#'+it[0]+'" data-t="'+it[0]+'"><span class="n">'+String(n).padStart(2,'0')+'</span><span>'+it[1]+'</span></a>';
+    });
+  });
+  nav.innerHTML = html;
+
+  const links = [...nav.querySelectorAll('a')];
+  const secs  = [...document.querySelectorAll('section[id]')];
+
+  // scroll spy
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(a=>a.classList.toggle('on', a.dataset.t === e.target.id));
+      }
+    });
+  },{rootMargin:'-10% 0px -75% 0px'});
+  secs.forEach(s=>io.observe(s));
+
+  // search
+  const q = document.getElementById('q');
+  const empty = document.getElementById('empty');
+  q.addEventListener('input', ()=>{
+    const v = q.value.trim().toLowerCase();
+    let hits = 0;
+    secs.forEach(s=>{
+      if(!v){ s.classList.remove('hidden'); hits++; return; }
+      const hay = (s.textContent + ' ' + (s.dataset.k||'')).toLowerCase();
+      const ok = hay.includes(v);
+      s.classList.toggle('hidden', !ok);
+      if(ok) hits++;
+    });
+    document.querySelectorAll('.part-head').forEach(p=>p.classList.toggle('hidden', !!v));
+    links.forEach(a=>{
+      const t = document.getElementById(a.dataset.t);
+      a.style.display = (t && t.classList.contains('hidden')) ? 'none' : '';
+    });
+    empty.style.display = hits ? 'none' : 'block';
+  });
+
+  // mobile toggle
+  const rail = document.getElementById('rail'), tg = document.getElementById('toggle');
+  tg.addEventListener('click', ()=>{
+    const open = rail.classList.toggle('open');
+    tg.textContent = open ? 'Ocultar índice' : 'Ver índice';
+  });
+  nav.addEventListener('click', e=>{
+    if(e.target.closest('a') && window.innerWidth <= 860){
+      rail.classList.remove('open'); tg.textContent = 'Ver índice';
+    }
+  });
+})();
+</script>
+</body>
+</html>
